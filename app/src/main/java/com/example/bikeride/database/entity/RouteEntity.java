@@ -7,6 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 

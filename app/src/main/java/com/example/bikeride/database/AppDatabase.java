@@ -5,11 +5,12 @@ import android.arch.persistence.room.RoomDatabase;
 
 import com.example.bikeride.database.dao.impl.BikeRideDao;
 import com.example.bikeride.database.dao.impl.RouteDao;
+import com.example.bikeride.database.entity.BikeRideEntity;
 import com.example.bikeride.database.entity.RouteEntity;
 
 @Database(entities = {
-        BikeRideDao.class,
-        RouteEntity.class}, version = 1)
+        BikeRideEntity.class,
+        RouteEntity.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract BikeRideDao getBikeRideDao();
     public abstract RouteDao getRouteDao();
