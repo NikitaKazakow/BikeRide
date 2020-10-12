@@ -1,6 +1,6 @@
 package com.example.bikeride.database.dao.impl;
 
-import android.arch.persistence.room.Dao;
+import androidx.room.Dao;
 
 import com.example.bikeride.database.dao.BaseDao;
 import com.example.bikeride.database.entity.RouteEntity;
