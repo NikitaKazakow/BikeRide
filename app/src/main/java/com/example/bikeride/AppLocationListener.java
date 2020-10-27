@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 public class AppLocationListener implements LocationListener {
+
     private LocationListenerInterface locationListenerInterface;
 
     @Override
