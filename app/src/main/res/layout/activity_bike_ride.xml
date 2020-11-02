@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="0">
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.circularreveal.cardview.CircularRevealCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -55,7 +55,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/TextAppearance.MaterialComponents.Headline6"
-                                android:text="15"/>
+                                android:text="@{Float.toString(bikeRideViewModel.speed)}"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -68,8 +68,8 @@
                             android:text="СКОРОСТЬ"/>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+            <com.google.android.material.circularreveal.cardview.CircularRevealCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -94,15 +94,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.MaterialComponents.Headline6"
-                            android:text="2:27:20"/>
+                            android:text="@{Long.toString(bikeRideViewModel.time)}"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="ВРЕМЯ ПОЕЗДКИ"/>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+            <com.google.android.material.circularreveal.cardview.CircularRevealCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -132,7 +132,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/TextAppearance.MaterialComponents.Headline6"
-                                android:text="15"/>
+                                android:text="@{Long.toString(bikeRideViewModel.distance)}"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -145,8 +145,9 @@
                             android:text="РАССТОЯНИЕ"/>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+            <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+                android:id="@+id/average_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -176,7 +177,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/TextAppearance.MaterialComponents.Headline6"
-                                android:text="8.54"/>
+                                android:text="@{Float.toString(bikeRideViewModel.averageSpeed)}"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -189,7 +190,7 @@
                             android:text="СРЕДНЯЯ СКОРОСТЬ"/>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
         </LinearLayout>
     </LinearLayout>
 </layout>
