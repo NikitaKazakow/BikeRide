@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="bikeRideViewModel"
+            name="viewModel"
             type="com.example.bikeride.viewModel.MainViewModel"/>
     </data>
     <LinearLayout
@@ -18,11 +18,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:context=".view.activity.MainActivity">
-            <androidx.fragment.app.FragmentContainerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ride_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:name="com.example.bikeride.view.activity.ItemFragment"/>
+                app:adapter="@{viewModel.adapter}"
+                app:data="@{viewModel.data}"
+                tools:context=".view.activity.MainActivity"/>
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/start_ride_fab"
                 android:layout_width="wrap_content"

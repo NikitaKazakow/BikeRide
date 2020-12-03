@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-
+        <import type="com.example.bikeride.util.RideTimeConverter"/>
+        <import type="com.example.bikeride.util.RideDistanceConverter"/>
+        <import type="com.example.bikeride.util.RideAverageSpeedConverter"/>
+        <variable
+            name="viewModel"
+            type="com.example.bikeride.viewModel.BikeRideItemViewModel"/>
     </data>
-    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:id="@+id/bike_ride_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardBackgroundColor="@color/cardview_shadow_end_color"
-        card_view:cardCornerRadius="4dp"
-        card_view:contentPadding="4dp">
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="16dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.MaterialComponents.Headline5"
-                android:padding="4dp"
-                android:text="Поезда от 29.10.2020"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:padding="4dp"
-                android:text="Время: с 14.35 до 16.05"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:padding="4dp"
-                android:text="Дистанция: 4.5 км"/>
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:textAllCaps="false"
-                card_view:icon="@drawable/baseline_expand_more_white_18"
-                card_view:iconGravity="textEnd"
-                android:text="Подробнее"/>
-        </LinearLayout>
-    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:padding="4dp"
+            app:text="@{viewModel.date.toGMTString()}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:padding="4dp"
+            app:text="@{RideTimeConverter.convert(viewModel.time)}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:padding="4dp"
+            app:text="@{RideDistanceConverter.convert(viewModel.distance)}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:padding="4dp"
+            app:text="@{RideAverageSpeedConverter.convert(viewModel.averageSpeed)}"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textAllCaps="false"
+            card_view:icon="@drawable/baseline_expand_more_white_18"
+            card_view:iconGravity="textEnd"
+            android:text="Подробнее"/>
+    </LinearLayout>
 </layout>

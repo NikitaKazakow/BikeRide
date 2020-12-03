@@ -34,13 +34,7 @@ public class BikeRideEntity {
     long distance;
 
     @NonNull
-    int averageSpeed;
-
-    @NonNull
-    int maxSpeed;
-
-    @NonNull
-    boolean isGoalCompleted;
+    float averageSpeed;
 
     @NonNull
     long rideTime;

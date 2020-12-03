@@ -150,4 +150,8 @@ public class BikeRideActivity extends AppCompatActivity implements OnMapReadyCal
         map.clear();
         checkLocationPermissions();
     }
+
+    public void stopLocationListen() {
+        locationManager.removeUpdates(appLocationListener);
+    }
 }

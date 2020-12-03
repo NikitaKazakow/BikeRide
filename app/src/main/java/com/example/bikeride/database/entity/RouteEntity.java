@@ -21,7 +21,8 @@ import static androidx.room.ForeignKey.CASCADE;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-@Entity(foreignKeys = @ForeignKey(entity = BikeRideEntity.class,
+@Entity(tableName = "routes",
+        foreignKeys = @ForeignKey(entity = BikeRideEntity.class,
         parentColumns = "id",
         childColumns = "bike_ride_id",
         onDelete = CASCADE))
