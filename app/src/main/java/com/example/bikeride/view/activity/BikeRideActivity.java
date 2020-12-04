@@ -120,6 +120,8 @@ public class BikeRideActivity extends AppCompatActivity implements OnMapReadyCal
     public void onLocationChanged(Location location) {
         if (location.hasSpeed() && lastLocation != null) {
 
+            viewModel.addPoint(location.getLongitude(), location.getLatitude());
+
             viewModel.setSpeed(location.getSpeed());
             viewModel.setDistance(distance += lastLocation.distanceTo(location));
 

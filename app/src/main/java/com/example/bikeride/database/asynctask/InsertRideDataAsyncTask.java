@@ -11,7 +11,7 @@ import com.example.bikeride.database.entity.BikeRideEntity;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class InsertDataAsyncTask extends AsyncTask<BikeRideEntity, Integer, Void> {
+public class InsertRideDataAsyncTask extends AsyncTask<BikeRideEntity, Integer, Void> {
     @Override
     protected Void doInBackground(@NonNull BikeRideEntity... bikeRideEntities) {
         BikeRideDao bikeRideDao = App.getInstance().getDatabase().getBikeRideDao();

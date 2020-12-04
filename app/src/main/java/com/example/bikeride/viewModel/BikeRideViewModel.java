@@ -1,28 +1,37 @@
 package com.example.bikeride.viewModel;
 
+import android.util.Pair;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.example.bikeride.BR;
-import com.example.bikeride.database.asynctask.InsertDataAsyncTask;
+import com.example.bikeride.database.asynctask.InsertRideDataAsyncTask;
+import com.example.bikeride.database.asynctask.InsertRouteDataAsyncTask;
 import com.example.bikeride.database.entity.BikeRideEntity;
 import com.example.bikeride.view.activity.BikeRideActivity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
 public class BikeRideViewModel extends BaseObservable {
+
     private int counter;
     private float speed;
     private float average_speed;
     private long distance;
     private long time;
 
+    private final List<Pair<Double, Double>> points;
+
     private final Timer timer;
 
     public BikeRideViewModel() {
+        points = new ArrayList<>();
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -76,16 +85,31 @@ public class BikeRideViewModel extends BaseObservable {
         notifyPropertyChanged(BR.time);
     }
 
+    public void addPoint(double longitude, double latitude) {
+        points.add(new Pair<>(longitude, latitude));
+    }
+
     public void finishRide(Object activity) {
         if (activity instanceof BikeRideActivity) {
             timer.cancel();
-            InsertDataAsyncTask task = new InsertDataAsyncTask();
-            task.execute(new BikeRideEntity(new Date(), distance, average_speed, time));
+
+            InsertRouteDataAsyncTask routeTask = new InsertRouteDataAsyncTask();
+            InsertRideDataAsyncTask rideTask = new InsertRideDataAsyncTask();
+
+            rideTask.execute(new BikeRideEntity(new Date(), distance, average_speed, time));
             try {
-                task.get();
+                rideTask.get();
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
+
+            routeTask.execute(points);
+            try {
+                routeTask.get();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+
             ((BikeRideActivity) activity).stopLocationListen();
             ((BikeRideActivity) activity).finish();
         }

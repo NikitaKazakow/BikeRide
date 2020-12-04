@@ -31,10 +31,10 @@ public class RouteEntity {
     long id;
 
     @NonNull
-    long latitude; //Широта
+    double latitude; //Широта
 
     @NonNull
-    long longitude; //Долгота
+    double longitude; //Долгота
 
     @NonNull
     @ColumnInfo(name = "bike_ride_id")

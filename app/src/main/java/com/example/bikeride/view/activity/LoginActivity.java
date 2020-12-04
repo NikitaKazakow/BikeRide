@@ -1,16 +1,27 @@
 package com.example.bikeride.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.example.bikeride.R;
+import com.example.bikeride.databinding.ActivityLoginBinding;
+import com.example.bikeride.viewModel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private LoginViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        bind();
+    }
+
+    private void bind() {
+        ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        viewModel = new LoginViewModel();
+        binding.setViewModel(viewModel);
     }
 }

@@ -7,7 +7,7 @@ public class RideAverageSpeedConverter {
             result = result.substring(0, result.indexOf('.') + 3);
         }
         catch (IndexOutOfBoundsException exception) {
-
+            exception.printStackTrace();
         }
         return  result;
     }

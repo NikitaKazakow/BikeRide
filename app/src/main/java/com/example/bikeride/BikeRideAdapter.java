@@ -17,7 +17,7 @@ import com.example.bikeride.viewModel.BikeRideItemViewModel;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BikeRideAdapter extends RecyclerView.Adapter<BikeRideAdapter.BikeRideHolder> {
+public class BikeRideAdapter extends RecyclerView.Adapter<BikeRideAdapter.BikeRideViewHolder> {
 
     private final List<BikeRideModel> data;
 
@@ -27,14 +27,14 @@ public class BikeRideAdapter extends RecyclerView.Adapter<BikeRideAdapter.BikeRi
 
     @NonNull
     @Override
-    public BikeRideHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BikeRideViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.bike_ride_item, new LinearLayout(parent.getContext()), false);
-        return new BikeRideHolder(itemView);
+        return new BikeRideViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BikeRideHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BikeRideViewHolder holder, int position) {
         BikeRideModel bikeRideModel = data.get(position);
         holder.setViewModel(new BikeRideItemViewModel(bikeRideModel));
     }
@@ -45,13 +45,13 @@ public class BikeRideAdapter extends RecyclerView.Adapter<BikeRideAdapter.BikeRi
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull BikeRideHolder holder) {
+    public void onViewAttachedToWindow(@NonNull BikeRideViewHolder holder) {
         super.onViewAttachedToWindow(holder);
         holder.bind();
     }
 
     @Override
-    public void onViewDetachedFromWindow(@NonNull BikeRideHolder holder) {
+    public void onViewDetachedFromWindow(@NonNull BikeRideViewHolder holder) {
         super.onViewDetachedFromWindow(holder);
         holder.unbind();
     }
@@ -67,17 +67,17 @@ public class BikeRideAdapter extends RecyclerView.Adapter<BikeRideAdapter.BikeRi
         notifyDataSetChanged();
     }
 
-     static class BikeRideHolder extends RecyclerView.ViewHolder {
+     static class BikeRideViewHolder extends RecyclerView.ViewHolder {
 
         BikeRideItemBinding binding;
 
-        BikeRideHolder(View itemView) {
+        BikeRideViewHolder(View itemView) {
             super(itemView);
             bind();
         }
 
         void bind() {
-            if (binding != null) {
+            if (binding == null) {
                 binding = DataBindingUtil.bind(itemView);
             }
         }
