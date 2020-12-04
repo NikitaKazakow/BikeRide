@@ -1,6 +1,9 @@
 package com.example.bikeride.viewModel;
 
+import android.content.Intent;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -12,9 +15,13 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bikeride.BR;
 import com.example.bikeride.view.activity.LoginActivity;
+import com.example.bikeride.view.activity.MainActivity;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class LoginViewModel extends BaseObservable {
 
@@ -86,10 +93,10 @@ public class LoginViewModel extends BaseObservable {
         notifyPropertyChanged(BR.isPasswordEmpty);
     }
 
-    public void login(Object activity) {
+    public void login(final Object activity) {
         if (activity instanceof LoginActivity) {
             RequestQueue queue = Volley.newRequestQueue((LoginActivity)activity);
-            String url = "http://26.241.146.215:8000/auth";
+            String url = "http://26.241.146.215:25565/auth";
 
             JSONObject postData = new JSONObject();
             try {
@@ -99,11 +106,11 @@ public class LoginViewModel extends BaseObservable {
                 e.printStackTrace();
             }
 
+
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, postData, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    System.out.println(response);
-                    //TODO обработать ответ от сервера
+                    ((LoginActivity)activity).startMainActivity();
                 }
             }, new Response.ErrorListener() {
                 @Override

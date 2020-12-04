@@ -53,4 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, BikeRideActivity.class));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        //TODO Закрытие приложения
+        System.exit(0);
+    }
 }

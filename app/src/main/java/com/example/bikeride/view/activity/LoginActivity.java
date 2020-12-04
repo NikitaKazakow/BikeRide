@@ -1,6 +1,8 @@
 package com.example.bikeride.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -24,4 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         viewModel = new LoginViewModel();
         binding.setViewModel(viewModel);
     }
+
+    public void startMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
 }
