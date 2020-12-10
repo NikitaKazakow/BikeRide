@@ -14,17 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.activity.BikeRideActivity"
-        android:orientation="vertical">
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/map"
-            android:name="com.example.bikeride.view.fragment.MyMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+        android:orientation="horizontal">
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -205,5 +199,11 @@
                 android:layout_margin="16dp"
                 android:onClick="@{(view) -> bikeRideViewModel.finishRide(context)}"/>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.example.bikeride.view.fragment.MyMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
     </LinearLayout>
 </layout>

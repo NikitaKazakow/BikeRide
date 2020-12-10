@@ -11,7 +11,7 @@ import java.util.List;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class GetBikeRidesListTask extends AsyncTask<BikeRideEntity, Integer, List<BikeRideEntity>> {
+public class GetBikeRidesListAsyncTask extends AsyncTask<BikeRideEntity, Integer, List<BikeRideEntity>> {
     @Override
     protected List<BikeRideEntity> doInBackground(BikeRideEntity... bikeRideEntities) {
         List<BikeRideEntity> bikeRideEntityList = App.getInstance().getDatabase().getBikeRideDao().getBikeRides();

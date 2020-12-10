@@ -6,6 +6,7 @@ import androidx.room.Query;
 
 import com.example.bikeride.database.entity.BikeRideEntity;
 
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -19,6 +20,6 @@ public interface BikeRideDao {
     @Query("SELECT * FROM cycling ORDER BY id DESC LIMIT 1")
     BikeRideEntity getLastRide();
 
-    @Query("SELECT * FROM cycling WHERE id = :id")
-    BikeRideEntity getRideById(long id);
+    @Query("SELECT * FROM cycling WHERE date = :date")
+    BikeRideEntity getRideByDate(Date date);
 }

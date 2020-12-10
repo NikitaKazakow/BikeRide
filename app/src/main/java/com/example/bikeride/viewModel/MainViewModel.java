@@ -5,7 +5,7 @@ import androidx.databinding.Bindable;
 
 import com.example.bikeride.BR;
 import com.example.bikeride.BikeRideAdapter;
-import com.example.bikeride.database.asynctask.GetBikeRidesListTask;
+import com.example.bikeride.database.asynctask.GetBikeRidesListAsyncTask;
 import com.example.bikeride.database.entity.BikeRideEntity;
 import com.example.bikeride.model.BikeRideModel;
 
@@ -35,7 +35,7 @@ public class MainViewModel extends BaseObservable {
 
 
     void populateData() {
-        GetBikeRidesListTask task = new GetBikeRidesListTask();
+        GetBikeRidesListAsyncTask task = new GetBikeRidesListAsyncTask();
         task.execute();
         List<BikeRideEntity> dataList = null;
         try {

@@ -23,14 +23,14 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:padding="4dp"
-            app:text="@{`Дата: ` + RideDateConverter.convert(viewModel.date)}"
+            app:text="@{@string/date_item + RideDateConverter.convert(viewModel.date)}"
             tools:text="Дата"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:padding="4dp"
-            app:text="@{`Время: ` + RideTimeConverter.convert(viewModel.time)}"
+            app:text="@{@string/time_item + RideTimeConverter.convert(viewModel.time)}"
             tools:text="Время: 1:46"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,13 +40,13 @@
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.MaterialComponents.Caption"
                 android:padding="4dp"
-                app:text="@{`Расстояние: ` + RideDistanceConverter.convert(viewModel.distance)}"
+                app:text="@{@string/distance_item + RideDistanceConverter.convert(viewModel.distance)}"
                 tools:text="Расстояние: 5.8"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.MaterialComponents.Caption"
-                app:text="@{viewModel.distance >= 1000 ? ` км` : ` м`}"
+                app:text="@{viewModel.distance >= 1000 ? @string/distance_item_unit_km : @string/distance_item_unit_m}"
                 tools:text=" км"/>
         </LinearLayout>
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:padding="4dp"
-            app:text="@{`Средняя скорость: ` + RideAverageSpeedConverter.convert(viewModel.averageSpeed) + ` км/ч`}"
+            app:text="@{@string/average_speed + RideAverageSpeedConverter.convert(viewModel.averageSpeed) + @string/average_speed_kmh}"
             tools:text="Средняя скорость: 21.6 км/ч"/>
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
@@ -64,6 +64,7 @@
             android:textAllCaps="false"
             tools:icon="@drawable/baseline_expand_more_white_18"
             tools:iconGravity="textEnd"
-            android:text="Подробнее"/>
+            android:text="@string/route_button_text"
+            android:onClick="@{(view) -> viewModel.showRoute(context)}"/>
     </LinearLayout>
 </layout>
