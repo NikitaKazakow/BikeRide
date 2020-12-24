@@ -16,9 +16,9 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("MyKey.jks") //ссылка на файл с ключами в корневой папке проекта
+            storeFile file("Key.jks") //ссылка на файл с ключами в корневой папке проекта
             storePassword "123456" //пароль хранилища ключей
-            keyAlias "key0" // keyAlias, который задавали при создания ключа
+            keyAlias "keyN" // keyAlias, который задавали при создания ключа
             keyPassword "123456" //пароль ключа APK
         }
     }
