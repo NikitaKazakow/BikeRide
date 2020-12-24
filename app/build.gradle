@@ -14,6 +14,15 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
+    signingConfigs {
+        release {
+            storeFile file("MyKey.jks") //ссылка на файл с ключами в корневой папке проекта
+            storePassword "123456" //пароль хранилища ключей
+            keyAlias "key0" // keyAlias, который задавали при создания ключа
+            keyPassword "123456" //пароль ключа APK
+        }
+    }
+
     buildFeatures {
         dataBinding true
     }
@@ -22,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release //подпись релизного APK
         }
     }
 
@@ -45,7 +55,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    testCompile 'com.android.support.test:rules:1.0.1'
+
 
     implementation 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
